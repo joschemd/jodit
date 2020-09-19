@@ -9,7 +9,7 @@
 		"newversion": "npm run lint && npm test && npm version patch --no-git-tag-version && npm run build && npm run newversiongit && npm publish ./",
 		"newversiongit": "git add --all  && git commit -m \"New version $npm_package_version. Read more https://github.com/xdan/jodit/releases/tag/$npm_package_version \" && git tag $npm_package_version && git push --tags origin HEAD:master",
 		"start": "node server.js --port=2000",
-		"clean": "rm -rf build/*",
+		"clean": "rimraf build/*",
 		"build": "npm run clean && gulp build && npm run build-es5 && npm run build-es2018 && npm run build-no-uglify-es5 && npm run build-no-uglify-es2018",
 		"build-es5": "webpack --progress --mode production --es es5 --uglify true",
 		"build-es2018": "webpack --progress --mode production --es es2018 --uglify true",
@@ -19,7 +19,7 @@
 		"test-debug": "karma start --browsers Chrome karma.conf.js  --single-run false",
 		"test-chrome": "karma start --browsers Chrome karma.conf.js",
 		"jodit": "cd ../jodit-react/ && npm update && npm run newversion && cd ../jodit-angular/ && npm run newversion && cd ../jodit-joomla && npm run newversion && cd ../jodit-docs && npm run newversion && cd ../jodit-master && npm run newversion",
-		"types": "rm -rf types/* && tsc --project . --declaration --outDir types --emitDeclarationOnly",
+		"types": "rimraf types/* && tsc --project . --declaration --outDir types --emitDeclarationOnly",
 		"pretty": "prettier --write ./src/*.{ts,less} ./src/**/*.{ts,less} ./src/**/**/*.{ts,less}",
 		"fix": "eslint ./src/* ./test/ --fix && npm run pretty",
 		"lint": "eslint ./src/* ./test/"
