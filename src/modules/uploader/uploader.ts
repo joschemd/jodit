@@ -19,7 +19,8 @@ import type {
 	IUploaderAnswer,
 	IUploaderData,
 	IUploaderOptions,
-	IViewBased
+	IViewBased,
+	IViewOptions
 } from '../../types';
 import { Ajax } from '../../core/ajax';
 import {
@@ -222,7 +223,7 @@ export class Uploader extends ViewComponent implements IUploader {
 			sendData = (
 				request: FormData | IDictionary<string> | string
 			): Promise<any> => {
-				const ajax = new Ajax(this.j || this, {
+				const ajax = new Ajax((this.j || this) as IViewBased<IViewOptions>, {
 					xhr: () => {
 						const xhr = new XMLHttpRequest();
 

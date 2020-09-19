@@ -18,7 +18,7 @@ import { css, isFunction } from '../../../core/helpers';
 export class ToolbarEditorCollection extends ToolbarCollection<IJodit> {
 	/** @override */
 	shouldBeDisabled(button: IToolbarButton): boolean {
-		const disabled = super.shouldBeDisabled(button);
+		const disabled = super.shouldBeDisabled(button) as boolean;
 
 		if (disabled !== undefined) {
 			return disabled;
@@ -34,7 +34,7 @@ export class ToolbarEditorCollection extends ToolbarCollection<IJodit> {
 
 	/** @override */
 	shouldBeActive(button: IToolbarButton): boolean {
-		const active = super.shouldBeActive(button);
+		const active = super.shouldBeActive(button) as boolean;
 
 		if (active !== undefined) {
 			return active;
